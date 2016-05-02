@@ -7,5 +7,6 @@
   <body>
     <h1>Hello, {{ name }}!</h1>
     <p>Welcome to {{ title }}</p>
+    <p>You have visited this site {{visits}} time(s).</p>
   </body>
 </html>
