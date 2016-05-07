@@ -30,8 +30,23 @@ describe('/games', () => {
                 .delete('/games/' + game.id)
                 .expect(200)
                 .expect(() =>
-                  expect(gamesService.createdBy(userId)).to.be.empty) 
+                  expect(gamesService.createdBy(userId)).to.be.empty)
                 .end(done);
+        });
+        
+        it('should not allow users to delete games that they did not set', done => {
+            const game = gamesService.create('another-user-id', 'test');
+            agent
+                .delete('/games/' + game.id)
+                .expect(403)
+                .expect(() => expect(gamesService.get(game.id).ok))
+                .end(done);
+        });
+
+        it('should return a 404 for requests to delete a game that does not exist', done => {
+            agent
+                .delete('/games/notAGame')
+                .expect(404, done);
         });
     });
 });
