@@ -1,6 +1,6 @@
 'use strict';
 
-const assert = require('assert');
+const expect = require('chai').expect;
 const service = require('../../src/services/games.js');
 
 describe('Game service', () => {
@@ -21,10 +21,10 @@ describe('Game service', () => {
             const games = service.availableTo(secondUserId);
             
             // Then
-            assert.equal(games.length, 1);
+            expect(games.length).to.equal(1);
             const game = games[0];
-            assert.equal(game.setBy, firstUserId);
-            assert.equal(game.word, 'TESTING');
+            expect(game.setBy).to.equal(firstUserId);
+            expect(game.word).to.equal('TESTING');
         });
         
         it('should not include games set by the same user', () => {
@@ -36,9 +36,9 @@ describe('Game service', () => {
             const games = service.availableTo(secondUserId);
             
             // Then
-            assert.equal(games.length, 1);
+            expect(games.length).to.equal(1);
             const game = games[0];
-            assert.notEqual(game.setBy, secondUserId);
+            expect(game.setBy).not.to.equal(secondUserId);
         });
     });
 });
