@@ -6,6 +6,10 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
-    <p>Your user ID is {{ userId }}.</p>
+    <form action="/games" method="POST">
+      <input type="text" name="word"
+             placeholder="Enter a word to guess..." />
+      <input type="submit" />
+    </form>
   </body>
 </html>
