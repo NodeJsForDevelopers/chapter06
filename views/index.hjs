@@ -8,21 +8,15 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
-    <form action="/games" method="POST">
-      <input type="text" name="word"
+    <form action="/games" method="POST" id="createGame">
+      <input type="text" name="word" id="word"
              placeholder="Enter a word to guess..." />
       <input type="submit" />
     </form>
     <h2>Games created by you</h2>  
     <ul id="createdGames">
       {{#createdGames}}
-        <li class="game">
-          {{word}}
-          <a class="delete" href="/games/{{id}}">(delete)</a>
-        </li>
-      {{/createdGames}}
-      {{^createdGames}}
-        (None)
+        {{> createdGame}}
       {{/createdGames}}
     </ul>
     <h2>Games available to play</h2>

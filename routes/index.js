@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
     title: 'Hangman',
     userId: req.user.id,
     createdGames: games.createdBy(req.user.id),
-    availableGames: games.availableTo(req.user.id)
+    availableGames: games.availableTo(req.user.id),
+    partials: { createdGame: 'createdGame' }
   });
 });
 
