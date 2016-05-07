@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('chapter02:server');
+var app = require('../src/app');
+var debug = require('debug')('hangman:server');
 var http = require('http');
 
 /**
