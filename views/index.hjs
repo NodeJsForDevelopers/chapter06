@@ -5,8 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Hello, {{ name }}!</h1>
-    <p>Welcome to {{ title }}</p>
-    <p>You have visited this site {{visits}} time(s).</p>
+    <h1>{{ title }}</h1>
+    <p>Your user ID is {{ userId }}.</p>
   </body>
 </html>
