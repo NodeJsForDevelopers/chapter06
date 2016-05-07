@@ -9,6 +9,16 @@ class Game {
         this.setBy = setBy;
         this.word = word.toUpperCase();
     }
+    
+    positionsOf(character) {
+        let positions = [];
+        for (let i in this.word) {
+            if (this.word[i] === character.toUpperCase()) {
+                positions.push(i);
+            }
+        }
+        return positions;
+    }
 }
 
 module.exports.create = (userId, word) => {

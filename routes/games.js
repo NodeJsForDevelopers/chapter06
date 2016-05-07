@@ -14,4 +14,35 @@ router.post('/', function(req, res, next) {
     }
 });
 
+const checkGameExists = function(id, res, callback) {
+    const game = service.get(id);
+    if (game) {
+        callback(game);
+    } else {
+        res.status(404).send('Non-existent game ID');
+    }
+}
+
+router.get('/:id', function(req, res, next) {
+    checkGameExists(
+        req.params.id,
+        res,
+        game => res.render('game', {
+            length: game.word.length,
+            id: game.id
+        }));
+});
+
+router.post('/:id/guesses', function(req, res, next) {
+    checkGameExists(
+        req.params.id,
+        res,
+        game => {
+            res.send({
+                positions: game.positionsOf(req.body.letter)
+            });
+        }
+    );
+});
+
 module.exports = router;

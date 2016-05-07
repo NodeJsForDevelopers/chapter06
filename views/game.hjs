@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hangman - Game #{{id}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="/scripts/game.js"></script>
+    <base href="/games/{{ id }}/">
+  </head>
+  <body>
+    <h1>Hangman - Game #{{id}}</h1>
+    <h2 id="word" data-length="{{ length }}"></h2>
+    <p>Press letter keys to guess</p>
+    <h3>Missed letters:</h3>
+    <p id="missedLetters"></p>
+  </body>
+</html>
