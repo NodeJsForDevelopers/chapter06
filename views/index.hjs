@@ -3,6 +3,8 @@
   <head>
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="/scripts/index.js"></script>
   </head>
   <body>
     <h1>{{ title }}</h1>
@@ -14,7 +16,10 @@
     <h2>Games created by you</h2>  
     <ul id="createdGames">
       {{#createdGames}}
-        <li>{{word}}</li>
+        <li class="game">
+          {{word}}
+          <a class="delete" href="/games/{{id}}">(delete)</a>
+        </li>
       {{/createdGames}}
       {{^createdGames}}
         (None)
