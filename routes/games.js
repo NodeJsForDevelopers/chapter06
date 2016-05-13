@@ -7,8 +7,8 @@ const service = require('../services/games');
 router.post('/', function(req, res, next) {
     const word = req.body.word;
     if (word && /^[A-Za-z]{3,}$/.test(word)) {
-        service.create(req.user.id, word);
-        res.redirect('/');
+        const game = service.create(req.user.id, word); 
+        res.redirect(`/games/${game.id}/created`);
     } else {
         res.status(400).send('Word must be at least three characters long and contain only letters');
     }
@@ -60,6 +60,13 @@ router.delete('/:id', function(req, res, next) {
             }
         }
     );
+});
+
+router.get('/:id/created', function(req, res, next) {
+    checkGameExists(
+        req.params.id,
+        res,
+        game => res.render('createdGame', game));
 });
 
 module.exports = router;
