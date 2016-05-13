@@ -11,5 +11,17 @@
              placeholder="Enter a word to guess..." />
       <input type="submit" />
     </form>
+    <h2>Games created by you</h2>  
+    <ul id="createdGames">
+      {{#createdGames}}
+        <li>{{word}}</li>
+      {{/createdGames}}
+    </ul>
+    <h2>Games available to play</h2>
+    <ul id="availableGames">
+      {{#availableGames}}
+        <li><a href="/games/{{id}}">#{{id}}</a></li>
+      {{/availableGames}}
+    </ul>
   </body>
 </html>
