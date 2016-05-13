@@ -45,4 +45,21 @@ router.post('/:id/guesses', function(req, res, next) {
     );
 });
 
+router.delete('/:id', function(req, res, next) {
+    checkGameExists(
+        req.params.id,
+        res,
+        game => {
+            if (game.setBy === req.user.id) {
+                game.remove();
+                res.send();
+            } else {
+                res.status(403).send(
+                    'You do not have permission to delete this game'
+                );
+            }
+        }
+    );
+});
+
 module.exports = router;

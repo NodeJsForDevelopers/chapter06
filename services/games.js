@@ -19,6 +19,10 @@ class Game {
         }
         return positions;
     }
+    
+    remove() {
+        games.splice(games.indexOf(this), 1);
+    }
 }
 
 module.exports.create = (userId, word) => {
